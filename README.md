@@ -141,7 +141,7 @@ Any Firefox-based web browser that supports manifest V3 (Version 109 or above).
    ```
    *(Or download the ZIP file and extract it to a local folder).*
 
-2. Open the [about:config](https://firefox-source-docs.mozilla.org/devtools-user/about_colon_debugging/index.html) page in your browser.
+2. Open the [about:debugging](https://firefox-source-docs.mozilla.org/devtools-user/about_colon_debugging/index.html) page in your browser.
 
 3. Select **This Firefox** to access the developer extensions menu.
 
