@@ -1,8 +1,10 @@
 <div align="center">
 
-# Theme Studio for GitHub
+# Theme Studio for GitHub - Firefox
 
 **A lightweight browser extension that brings customizable dark themes, code syntax highlighting, frosted glassmorphism, and contribution graph palettes to GitHub.**
+
+**For Chromium-based browers, see [the original project by xtroon](https://github.com/xtroon/github-theme-extension)**
 
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-orange?style=for-the-badge)](manifest.json)
@@ -130,30 +132,22 @@ Quick toggle via keyboard shortcut (`Alt + Shift + F`) or header button. Instant
 ## Installation and Setup
 
 ### Prerequisites
-Any Chromium-based browser supporting Manifest V3:
-- Google Chrome
-- Brave Browser
-- Microsoft Edge
-- Arc Browser
-- Opera / Vivaldi
+Any Firefox-based web browser that supports manifest V3 (Version 109 or above).
 
 ### Step-by-Step Setup
 1. Clone or download this repository to your machine:
    ```bash
-   git clone https://github.com/xtroon/github-theme-extension.git
+   git clone https://github.com/syndr7/github-theme-extension-firefox.git
    ```
    *(Or download the ZIP file and extract it to a local folder).*
 
-2. Open the Extensions management page in your browser:
-   - Chrome / Brave: `chrome://extensions`
-   - Microsoft Edge: `edge://extensions`
-   - Arc: Open Settings > Extensions
+2. Open the [about:config](https://firefox-source-docs.mozilla.org/devtools-user/about_colon_debugging/index.html) page in your browser.
 
-3. Toggle on **Developer mode** using the switch in the top-right corner.
+3. Select **This Firefox** to access the developer extensions menu.
 
-4. Click the **Load unpacked** button in the top-left toolbar.
+4. Click the **Load Temorary Addon** button under Temporary Extensions.
 
-5. Select the root folder of this project (your cloned directory containing `manifest.json`).
+5. Select the `manifest.json` file from the root folder of this project (your cloned directory).
 
 6. Open or refresh any page on [github.com](https://github.com). Click the extension icon in your browser toolbar to configure your settings.
 
@@ -205,7 +199,7 @@ github-theme-extension/
 
 ## Show Your Support
 
-If you find Theme Studio for GitHub useful, please consider starring the repository on GitHub.
+If you find Theme Studio for GitHub useful, please consider starring [the original repository](https://github.com/xtroon/github-theme-extension) on GitHub.
 
 ---
 
