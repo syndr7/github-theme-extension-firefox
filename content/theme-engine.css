@@ -45,7 +45,8 @@
   height: 100vh !important;
   z-index: 1 !important;
   pointer-events: none !important;
-  background: radial-gradient(circle at center, rgba(10, 10, 20, 0.25) 0%, rgba(5, 5, 12, 0.75) 100%);
+  /*background: radial-gradient(circle at center, rgba(10, 10, 20, 0.25) 0%, rgba(5, 5, 12, 0.75) 100%);*/ /* dark theme */
+  background: radial-gradient(circle at center, rgba(230, 233, 239, 0.90) 0%, rgba(230, 233, 239, 0.40) 100%); /* light theme */
   transition: opacity 0.35s ease;
 }
 
@@ -55,7 +56,7 @@ html[data-theme-studio-active="true"] body,
 body[data-theme-studio-active="true"] {
   background-color: transparent !important;
   color: var(--ts-fg) !important;
-  color-scheme: dark !important;
+  /*color-scheme: dark !important;*/
 }
 
 html[data-theme-studio-active="true"] body > * {

@@ -8,6 +8,37 @@
 
   const THEMES = [
     {
+      id: 'catpuccin-latte',
+      name: 'Catpuccin Latte',
+      colors: {
+        bg: '#eff1f5',
+        canvasSubtle: '#e6e9ef',
+        canvasInset: '#dce0e8',
+        border: '#ccd0da',
+        borderMuted: '#bcc0cc',
+        fg: '#4c4f69',
+        fgMuted: '#6c6f85',
+        accent: '#8839ef',
+        accentEmphasis: '#1e66f5',
+        success: '#40a02b',
+        danger: '#d20f39',
+        warning: '#df8e1d',
+        glassBg: 'rgba(239, 241, 245, 0.72)',
+        glassBorder: 'rgb(136, 57, 239, 0.18)'
+      },
+      syntax: {
+        keyword: '#8839ef',
+        string: '#40a02b',
+        constant: '#fe640b',
+        comment: '#7c7f93',
+        entity: '#1e66f5',
+        variable: '#4c4f69',
+        tag: '#d20f39',
+        operator: '#04a5e5'
+      },
+      previewChips: ['#8839ef', '#1e66f5', '#40a02b', '#eff1f5']
+    },
+    {
       id: 'catppuccin-mocha',
       name: 'Catppuccin Mocha',
       badge: 'Cozy Slate',
