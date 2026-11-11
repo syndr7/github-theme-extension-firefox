@@ -126,7 +126,14 @@
   // Render Themes Grid
   function renderThemes() {
     themesContainer.innerHTML = '';
-    window.ThemeStudio.THEMES.forEach(theme => {
+
+    // console.log(JSON.stringify(currentSettings, null, 2));
+
+    const themeList = currentSettings.colorScheme == 'light'
+      ? window.ThemeStudio.THEMES_LIGHT
+      : window.ThemeStudio.THEMES
+
+    themeList.forEach(theme => {
       const card = document.createElement('div');
       card.className = `ts-theme-card ${theme.id === currentSettings.themeId ? 'active' : ''}`;
       card.setAttribute('data-id', theme.id);
@@ -150,8 +157,8 @@
             <span style="color: ${theme.colors.fgMuted}; margin-left: 2px;">theme.ts</span>
           </div>
           <div class="ts-mockup-line">
-            <span style="color: ${theme.syntax ? theme.syntax.keyword : theme.colors.accentEmphasis};">export const</span> 
-            <span style="color: ${theme.syntax ? theme.syntax.entity : theme.colors.accent};">theme</span> = 
+            <span style="color: ${theme.syntax ? theme.syntax.keyword : theme.colors.accentEmphasis};">export const</span>
+            <span style="color: ${theme.syntax ? theme.syntax.entity : theme.colors.accent};">theme</span> =
             <span style="color: ${theme.syntax ? theme.syntax.string : theme.colors.success};">'${theme.name.split(' ')[0]}'</span>;
           </div>
         </div>

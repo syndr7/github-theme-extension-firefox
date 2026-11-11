@@ -199,8 +199,21 @@
         if (this.bgOverlay) this.bgOverlay.style.display = 'block';
       }
 
+
+      // Set context to dark or light mode
+      let theme;
+      if (this.settings.colorScheme == 'light') {
+        theme = this.findThemeLight(this.settings.themeIdLight);
+        console.log(this.settings.themeIdLight);
+        if (this.bgOverlay) this.bgOverlay.style.background = 'radial-gradient(circle at center, rgba(230, 233, 239, 0.90) 0%, rgba(230, 233, 239, 0.40) 100%)'
+      } else {
+        theme = this.findTheme(this.settings.themeId);
+        if (this.bgOverlay) this.bgOverlay.style.background = 'radial-gradient(circle at center, rgba(10, 10, 20, 0.25) 0%, rgba(5, 5, 12, 0.75) 100%)'
+      }
+
+      console.log(`Setting to ${JSON.stringify(theme, null, 2)}`)
+
       // Apply Theme Palette Colors
-      const theme = this.findTheme(this.settings.themeId);
       if (theme) {
         const c = theme.colors;
         root.style.setProperty('--ts-bg', c.bg);
@@ -285,6 +298,11 @@
     findTheme(id) {
       if (!window.ThemeStudio) return null;
       return window.ThemeStudio.THEMES.find(t => t.id === id) || window.ThemeStudio.THEMES[0];
+    }
+
+    findThemeLight(id) {
+      if (!window.ThemeStudio) return null;
+      return window.ThemeStudio.THEMES_LIGHT.find(t => t.id === id) || window.ThemeStudio.THEMES_LIGHT[0];
     }
 
     /**
@@ -453,13 +471,27 @@
     }
 
     /**
+     * Toggle dark and light color schemes
+     */
+    toggleColorScheme() {
+      const oldScheme = this.settings.colorScheme;
+      const newScheme = (oldScheme == 'dark')
+        ? 'light' : 'dark';
+      console.log(`Updated to ${newScheme}`);
+      this.settings.colorScheme = newScheme;
+      this.updateSettings({ colorScheme: newScheme });
+      this.applyAll();
+    }
+
+    /**
      * Attach interactive event listeners for stars, merges, and shortcuts
      */
     attachEventListeners() {
       // In-page keyboard shortcut fallback (Alt+Shift+F)
       window.addEventListener('keydown', (e) => {
         if (!isExtensionAlive()) return;
-        if (e.altKey && e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+        if (e.altKey && e.shiftKey && (e.key === 'F' || e.key === 'f' || e.key === 'Ï')) {
+          // The 'Ï' character is what you get when a mac presses (Option+Shift+F)
           e.preventDefault();
           this.toggleFocusMode();
         }
