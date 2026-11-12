@@ -150,8 +150,8 @@
             <span style="color: ${theme.colors.fgMuted}; margin-left: 2px;">theme.ts</span>
           </div>
           <div class="ts-mockup-line">
-            <span style="color: ${theme.syntax ? theme.syntax.keyword : theme.colors.accentEmphasis};">export const</span> 
-            <span style="color: ${theme.syntax ? theme.syntax.entity : theme.colors.accent};">theme</span> = 
+            <span style="color: ${theme.syntax ? theme.syntax.keyword : theme.colors.accentEmphasis};">export const</span>
+            <span style="color: ${theme.syntax ? theme.syntax.entity : theme.colors.accent};">theme</span> =
             <span style="color: ${theme.syntax ? theme.syntax.string : theme.colors.success};">'${theme.name.split(' ')[0]}'</span>;
           </div>
         </div>
@@ -350,21 +350,17 @@
       }
     });
 
-    inputUploadFile.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          saveSettings({
-            uploadedWallpaperData: ev.target.result,
-            customWallpaperUrl: '',
-            wallpaperEnabled: true
-          });
-          wallpaperToggle.checked = true;
-          highlightActiveWallpaper();
-        };
-        reader.readAsDataURL(file);
-      }
+    inputUploadFile.addEventListener('click', (e) => {
+      console.log('In handler');
+
+      chrome.windows.create({
+        url: chrome.runtime.getURL("../picker/picker.html"),
+        type: "popup",
+        width: 460,
+        height: 380
+      });
+
+      window.close();
     });
 
     btnClearCustomBg.addEventListener('click', () => {
