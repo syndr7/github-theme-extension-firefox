@@ -114,6 +114,17 @@
 
     if (confettiToggle) confettiToggle.checked = currentSettings.confettiEnabled;
 
+    switch (currentSettings.colorScheme) {
+      case 'dark':
+        btnDarkMode.checked = true;
+        btnLightMode.checked = false;
+        break;
+      case 'light':
+        btnDarkMode.checked = false;
+        btnLightMode.checked = true;
+        break;
+    }
+
     highlightActiveTheme();
     highlightActiveWallpaper();
     highlightActivePalette();
@@ -131,15 +142,13 @@
   function renderThemes() {
     themesContainer.innerHTML = '';
 
-    // console.log(JSON.stringify(currentSettings, null, 2));
-
     const themeList = currentSettings.colorScheme == 'light'
       ? window.ThemeStudio.THEMES_LIGHT
       : window.ThemeStudio.THEMES
 
     themeList.forEach(theme => {
       const card = document.createElement('div');
-      card.className = `ts-theme-card ${theme.id === currentSettings.themeId ? 'active' : ''}`;
+      card.className = `ts-theme-card ${(theme.id === currentSettings.themeId || theme.id === currentSettings.themeIdLight) ? 'active' : ''}`;
       card.setAttribute('data-id', theme.id);
 
       let chipsHtml = '';
@@ -174,7 +183,9 @@
       `;
 
       card.addEventListener('click', () => {
-        saveSettings({ themeId: theme.id });
+        currentSettings.colorScheme === 'light'
+          ? saveSettings({ themeIdLight: theme.id })
+          : saveSettings({ themeId: theme.id });
         highlightActiveTheme();
       });
 
@@ -184,7 +195,7 @@
 
   function highlightActiveTheme() {
     document.querySelectorAll('.ts-theme-card').forEach(c => {
-      c.classList.toggle('active', c.getAttribute('data-id') === currentSettings.themeId);
+      c.classList.toggle('active', c.getAttribute('data-id') === currentSettings.themeId || c.getAttribute('data-id') === currentSettings.themeIdLight);
     });
   }
 
@@ -407,17 +418,19 @@
     // Color Scheme Picker
 
     if (btnDarkMode) {
-      btnDarkMode.addEventListener('change', (event) => {
+      btnDarkMode.addEventListener('change', async (event) => {
         if (event.target.checked) {
-          saveSettings({ colorScheme: 'dark' });
+          await saveSettings({ colorScheme: 'dark' });
+          init();
         }
       });
     }
 
     if (btnLightMode) {
-      btnLightMode.addEventListener('change', (event) => {
+      btnLightMode.addEventListener('change', async (event) => {
         if (event.target.checked) {
-          saveSettings({ colorScheme: 'light' });
+          await saveSettings({ colorScheme: 'light' });
+          init();
         }
       });
     }
