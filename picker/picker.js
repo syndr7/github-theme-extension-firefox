@@ -33,6 +33,8 @@
       };
       reader.readAsDataURL(file);
     }
-    window.close();
+    setTimeout(() => {
+      window.close();
+    }, 1000);
   });
 })();
