@@ -19,22 +19,19 @@
   }
 
   // File upload handler
-  document.getElementById("file-input").addEventListener("change", async (event) => {
+  document.getElementById("input-upload-file").addEventListener("change", async (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = async (ev) => {
-        console.log('Callback');
         await saveSettings({
           uploadedWallpaperData: ev.target.result,
           customWallpaperUrl: '',
-          wallpaperEnabled: true
+          wallpaperEnabled: true,
         });
+        window.close();
       };
       reader.readAsDataURL(file);
     }
-    setTimeout(() => {
-      window.close();
-    }, 1000);
   });
 })();

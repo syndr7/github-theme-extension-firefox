@@ -356,8 +356,8 @@
       chrome.windows.create({
         url: chrome.runtime.getURL("../picker/picker.html"),
         type: "popup",
-        width: 460,
-        height: 380
+        width: 360,
+        height: 190
       });
 
       window.close();
