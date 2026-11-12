@@ -204,14 +204,11 @@
       let theme;
       if (this.settings.colorScheme == 'light') {
         theme = this.findThemeLight(this.settings.themeIdLight);
-        console.log(this.settings.themeIdLight);
         if (this.bgOverlay) this.bgOverlay.style.background = 'radial-gradient(circle at center, rgba(230, 233, 239, 0.90) 0%, rgba(230, 233, 239, 0.40) 100%)'
       } else {
         theme = this.findTheme(this.settings.themeId);
         if (this.bgOverlay) this.bgOverlay.style.background = 'radial-gradient(circle at center, rgba(10, 10, 20, 0.25) 0%, rgba(5, 5, 12, 0.75) 100%)'
       }
-
-      console.log(`Setting to ${JSON.stringify(theme, null, 2)}`)
 
       // Apply Theme Palette Colors
       if (theme) {
@@ -477,7 +474,6 @@
       const oldScheme = this.settings.colorScheme;
       const newScheme = (oldScheme == 'dark')
         ? 'light' : 'dark';
-      console.log(`Updated to ${newScheme}`);
       this.settings.colorScheme = newScheme;
       this.updateSettings({ colorScheme: newScheme });
       this.applyAll();
