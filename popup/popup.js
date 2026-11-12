@@ -36,6 +36,11 @@
   const btnFireConfetti = document.getElementById('btn-fire-confetti');
   const btnResetSettings = document.getElementById('btn-reset-settings');
 
+  // Color Scheme Selections
+  const btnSyncScheme = document.getElementById('btn-sync-scheme');
+  const btnDarkScheme = document.getElementById('btn-dark-scheme');
+  const btnLightScheme = document.getElementById('btn-light-scheme');
+
   // Initialize
   async function init() {
     setupTabs();
@@ -396,6 +401,28 @@
         const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
         if (tabs[0]) {
           chrome.tabs.sendMessage(tabs[0].id, { type: 'TRIGGER_CONFETTI' }).catch(() => {});
+        }
+      });
+    }
+
+    // Color Scheme Picker
+
+    if (btnSyncScheme) {
+      console.log('Not implemented');
+    }
+
+    if (btnDarkScheme) {
+      btnDarkScheme.addEventListener('change', (event) => {
+        if (event.target.checked) {
+          saveSettings({ colorScheme: 'dark' });
+        }
+      });
+    }
+
+    if (btnLightScheme) {
+      btnDarkScheme.addEventListener('change', (event) => {
+        if (event.target.checked) {
+          saveSettings({ colorScheme: 'light' });
         }
       });
     }
