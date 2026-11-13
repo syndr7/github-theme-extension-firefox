@@ -28,7 +28,7 @@
   const btnRandomWallpaper = document.getElementById('btn-random-wallpaper');
   const inputCustomUrl = document.getElementById('input-custom-url');
   const btnApplyUrl = document.getElementById('btn-apply-url');
-  const inputUploadFile = document.getElementById('input-upload-file');
+  const btnUploadFile = document.getElementById('btn-upload-file');
   const btnClearCustomBg = document.getElementById('btn-clear-custom-bg');
 
   // Celebrations & Preferences
@@ -350,16 +350,13 @@
       }
     });
 
-    inputUploadFile.addEventListener('click', (e) => {
-      console.log('In handler');
-
+    btnUploadFile.addEventListener('click', (e) => {
       chrome.windows.create({
         url: chrome.runtime.getURL("../picker/picker.html"),
         type: "popup",
         width: 360,
         height: 190
       });
-
       window.close();
     });
 
